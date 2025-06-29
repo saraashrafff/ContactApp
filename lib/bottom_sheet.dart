@@ -1,9 +1,15 @@
+import 'package:contact/pickimg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BottomSheetBar extends StatelessWidget {
+class BottomSheetBar extends StatefulWidget {
   const BottomSheetBar({super.key});
 
+  @override
+  State<BottomSheetBar> createState() => _BottomSheetBarState();
+}
+
+class _BottomSheetBarState extends State<BottomSheetBar> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -19,23 +25,7 @@ class BottomSheetBar extends StatelessWidget {
           children: [
             Row(
               children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFFFF1D4)),
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        child: Image.asset(
-                          'assets/images/imgs.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                Expanded(flex: 5, child: Column(children: [PickImg()])),
                 const SizedBox(width: 20),
                 Expanded(
                   flex: 9,
