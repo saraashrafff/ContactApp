@@ -10,6 +10,15 @@ class BottomSheetBar extends StatefulWidget {
 }
 
 class _BottomSheetBarState extends State<BottomSheetBar> {
+  final nameController = TextEditingController();
+  final nameDisplayController = TextEditingController();
+
+  final emailController = TextEditingController();
+  final emailDisplayController = TextEditingController();
+
+  final phoneController = TextEditingController();
+  final phoneDisplayController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -32,30 +41,58 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Name',
+                      TextFormField(
                         style: GoogleFonts.inter(
                           color: Color(0xFFFFF1D4),
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
+                        controller: nameDisplayController,
+                        readOnly: true,
+
+                        decoration: InputDecoration(
+                          hintText: 'Name',
+                          hintStyle: GoogleFonts.inter(
+                            color: Color(0xFFFFF1D4),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                      const Divider(color: Color(0xFFFFF1D4)),
-                      Text(
-                        'Email',
+                      TextFormField(
                         style: GoogleFonts.inter(
-                          color: const Color(0xFFFFF1D4),
+                          color: Color(0xFFFFF1D4),
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
+                        controller: emailDisplayController,
+                        readOnly: true,
+
+                        decoration: InputDecoration(
+                          hintText: 'Email',
+                          hintStyle: GoogleFonts.inter(
+                            color: Color(0xFFFFF1D4),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                      const Divider(color: Color(0xFFFFF1D4)),
-                      Text(
-                        'Number',
+                      TextFormField(
                         style: GoogleFonts.inter(
-                          color: const Color(0xFFFFF1D4),
+                          color: Color(0xFFFFF1D4),
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
+                        ),
+                        controller: phoneDisplayController,
+                        readOnly: true,
+
+                        decoration: InputDecoration(
+                          hintText: 'Phone',
+                          hintStyle: GoogleFonts.inter(
+                            color: Color(0xFFFFF1D4),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ],
@@ -65,6 +102,15 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
             ),
             Spacer(),
             TextFormField(
+              style: GoogleFonts.inter(
+                color: Color(0xFFFFF1D4),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              controller: nameController,
+              onChanged: (value) {
+                nameDisplayController.text = value;
+              },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xFFFFF1D4)),
@@ -85,6 +131,15 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
             Spacer(),
 
             TextFormField(
+              style: GoogleFonts.inter(
+                color: Color(0xFFFFF1D4),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              controller: emailController,
+              onChanged: (value) {
+                emailDisplayController.text = value;
+              },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xFFFFF1D4)),
@@ -105,6 +160,15 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
             Spacer(),
 
             TextFormField(
+              style: GoogleFonts.inter(
+                color: Color(0xFFFFF1D4),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              controller: phoneController,
+              onChanged: (value) {
+                phoneDisplayController.text = value;
+              },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xFFFFF1D4)),

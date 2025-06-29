@@ -15,7 +15,6 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 26),
           child: Column(
             children: [
-              // ✅ Top logo (no Expanded)
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -27,7 +26,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
 
-              // ✅ Middle section (Expanded is correct here)
               Expanded(
                 child: Center(
                   child: Column(
@@ -52,7 +50,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              // ✅ Bottom add button
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -71,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 12), // Optional: add spacing below button
+              const SizedBox(height: 12),
             ],
           ),
         ),
@@ -83,7 +80,6 @@ class HomeScreen extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      isScrollControlled: true,
       builder: (context) => const BottomSheetBar(),
     );
   }
