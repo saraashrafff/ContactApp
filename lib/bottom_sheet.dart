@@ -1,10 +1,11 @@
 import 'package:contact/pickimg.dart';
+import 'package:contact/user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BottomSheetBar extends StatefulWidget {
-  const BottomSheetBar({super.key});
-
+  final Function(UserCard) onAddCard;
+  const BottomSheetBar({super.key, required this.onAddCard});
   @override
   State<BottomSheetBar> createState() => _BottomSheetBarState();
 }
@@ -95,6 +96,7 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 3),
                     ],
                   ),
                 ),
@@ -192,7 +194,15 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
               width: double.infinity,
               height: MediaQuery.sizeOf(context).height * .06,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  final newCard = UserCard(
+                    name: 'test',
+                    email: 'test',
+                    phone: 'test',
+                  );
+                  widget.onAddCard(newCard);
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFFFFF1D4),
                   shape: RoundedRectangleBorder(
