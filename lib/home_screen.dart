@@ -71,19 +71,48 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: SizedBox(
-                  width: 56,
-                  height: 56,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      openBottomSheet(context);
-                    },
-                    backgroundColor: const Color(0xFFFFF1D4),
-                    child: Image.asset('assets/images/plus.png'),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+
+                children: [
+                  Visibility(
+                    visible: cards.isNotEmpty,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: SizedBox(
+                        width: 56,
+                        height: 56,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            setState(() {
+                              cards.removeLast();
+                            });
+                          },
+
+                          backgroundColor: const Color(0xFFF93E3E),
+                          child: Image.asset('assets/images/bin.png'),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Visibility(
+                    visible: cards.length < 6,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: SizedBox(
+                        width: 56,
+                        height: 56,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            openBottomSheet(context);
+                          },
+                          backgroundColor: const Color(0xFFFFF1D4),
+                          child: Image.asset('assets/images/plus.png'),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
