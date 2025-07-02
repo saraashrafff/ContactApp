@@ -129,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void openBottomSheet(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: true, // <-- important!
       context: context,
       backgroundColor: Colors.transparent,
       builder: (context) => BottomSheetBar(onAddCard: addCard),

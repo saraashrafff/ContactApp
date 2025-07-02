@@ -1,15 +1,21 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
   String name;
   String email;
   String phone;
+  final File? image;
+  // final voidCallBack onDelete;
+
   UserCard({
     super.key,
     required this.name,
     required this.email,
     required this.phone,
+    this.image,
   });
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -29,12 +35,14 @@ class UserCard extends StatelessWidget {
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
-            child: Image.asset(
-              'assets/images/cat2.png',
-              height: double.infinity,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+            child: image != null
+                ? Image.file(
+                    image!,
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )
+                : const Icon(Icons.person, size: 40),
           ),
         ),
         Positioned(
