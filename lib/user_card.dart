@@ -46,7 +46,7 @@ class UserCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 130,
+          top: 135,
           child: Padding(
             padding: const EdgeInsets.only(left: 8),
             child: ClipRRect(
@@ -56,7 +56,7 @@ class UserCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
-                    vertical: 8,
+                    vertical: 5,
                   ),
                   child: Text(
                     name,
@@ -74,6 +74,7 @@ class UserCard extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 5),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
