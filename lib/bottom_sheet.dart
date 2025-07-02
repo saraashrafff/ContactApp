@@ -143,6 +143,7 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter a Name';
                       }
+
                       return null;
                     },
                     decoration: InputDecoration(
@@ -178,6 +179,10 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter an Email';
                       }
+                      final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                      if (!emailRegex.hasMatch(value.trim())) {
+                        return 'Please enter a valid Email';
+                      }
                       return null;
                     },
                     decoration: InputDecoration(
@@ -212,6 +217,12 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter a Phone Number';
+                      }
+                      final phoneRegex = RegExp(
+                        r'^\+?\d{7,15}$',
+                      ); // Supports optional + and digits only
+                      if (!phoneRegex.hasMatch(value.trim())) {
+                        return 'Please enter a valid Phone Number';
                       }
                       return null;
                     },
