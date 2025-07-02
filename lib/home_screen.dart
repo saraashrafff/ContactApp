@@ -38,10 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? Column(
                           children: [
                             Spacer(),
-                            Image.asset(
-                              'assets/images/contacts.png',
-                              height: MediaQuery.sizeOf(context).height * .4,
-                              fit: BoxFit.contain,
+                            Center(
+                              child: Image.asset(
+                                'assets/images/contacts.png',
+                                height: MediaQuery.sizeOf(context).height * .4,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                             Text(
                               'There is No Contacts Added Here',
