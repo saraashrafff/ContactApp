@@ -46,11 +46,65 @@ class UserCard extends StatelessWidget {
           ),
         ),
         Positioned(
+          top: 130,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              child: Container(
+                color: Color(0xFFFFF1D4),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 8,
+                  ),
+                  child: Text(
+                    name,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Positioned(
           bottom: 60,
           child: Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Column(
-              children: [Text(email), SizedBox(height: 12), Text(phone)],
+            child: Padding(
+              padding: EdgeInsets.only(left: 5),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset('assets/images/email.png'),
+                      SizedBox(width: 5),
+
+                      Text(
+                        email,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Image.asset('assets/images/Phone_call.png'),
+                      SizedBox(width: 5),
+                      Text(
+                        phone,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -24,6 +24,8 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
   final phoneController = TextEditingController();
   final phoneDisplayController = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,16 +49,20 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   children: [
                     Expanded(
                       flex: 5,
-                      child: Column(
-                        children: [
-                          PickImg(
-                            onImagePicked: (pickedImageFile) {
-                              setState(() {
-                                selectedImage = pickedImageFile;
-                              });
-                            },
-                          ),
-                        ],
+                      child: Form(
+                        key: _formKey,
+
+                        child: Column(
+                          children: [
+                            PickImg(
+                              onImagePicked: (pickedImageFile) {
+                                setState(() {
+                                  selectedImage = pickedImageFile;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(width: 20),
@@ -136,6 +142,12 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   onChanged: (value) {
                     nameDisplayController.text = value;
                   },
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter a Name';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFFFFF1D4)),
@@ -164,6 +176,12 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   controller: emailController,
                   onChanged: (value) {
                     emailDisplayController.text = value;
+                  },
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter an Email';
+                    }
+                    return null;
                   },
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -194,6 +212,12 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   onChanged: (value) {
                     phoneDisplayController.text = value;
                   },
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter a Phone Number';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFFFFF1D4)),
@@ -218,15 +242,17 @@ class _BottomSheetBarState extends State<BottomSheetBar> {
                   height: MediaQuery.sizeOf(context).height * .06,
                   child: ElevatedButton(
                     onPressed: () {
-                      final newCard = UserCard(
-                        name: nameController.text,
-                        email: emailController.text,
-                        phone: phoneController.text,
-                        image: selectedImage,
-                      );
+                      if (_formKey.currentState!.validate()) {
+                        final newCard = UserCard(
+                          name: nameController.text,
+                          email: emailController.text,
+                          phone: phoneController.text,
+                          image: selectedImage,
+                        );
 
-                      widget.onAddCard(newCard);
-                      Navigator.pop(context);
+                        widget.onAddCard(newCard);
+                        Navigator.pop(context);
+                      }
                     },
 
                     style: ElevatedButton.styleFrom(
